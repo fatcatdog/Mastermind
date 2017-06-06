@@ -50,6 +50,10 @@ class Code
      @pegs == other.pegs
   end
 
+  def to_s
+    "[#{@pegs.join(", ")}]"
+  end 
+
 end
 
 class Game
@@ -60,14 +64,14 @@ class Game
   end
 
   def get_guess
+    puts "The possible colors are R, O, Y, G, B, P"
     print 'Enter a guess (ex. "BGPR"): '
     @guess = Code.parse(gets.chomp)
-    return @guess
   end
 
   def display_matches
     puts "Near matches #{@secret_code.near_matches(@guess)}"
-    puts "Near matches #{@secret_code.exact_matches(@guess)}"
+    puts "Exact matches #{@secret_code.exact_matches(@guess)}"
   end
 
 def play
@@ -89,7 +93,7 @@ def conclude
   else
     puts "You lose"
   end
-  puts "THe code was #{@secret_code}"
+  puts "The code was #{@secret_code}"
   end
 end
 
